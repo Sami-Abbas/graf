@@ -64,5 +64,5 @@ while True:
     print(response.status_code)
     print(response.content)
 
-    # Wait for 10 seconds before sending the next request
+    # Wait for 10 seconds before sending the next request.
     time.sleep(10)
