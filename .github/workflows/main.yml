@@ -1,0 +1,29 @@
+name: Send Metrics
+
+on:
+  push
+jobs:
+  send_metrics_job:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'  # Ensure Python 3.x is used
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+
+    - name: Run main2.py
+      env:
+        USER: "149418"
+        TOKEN: "eyJrIjoiZTVkYWY1N2MzZmNmYjIzMjU0YTNlNDhlMWFmZjlhZmNiMTAxNGJhNSIsIm4iOiJ0ZXN0IiwiaWQiOjQyMDQ5fQ=="
+        INGEST_ENDPOINT: "https://graphite-blocks-prod-us-central1.grafana.net/graphite/metrics"
+      run: |
+        python main2.py
